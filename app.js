@@ -6,12 +6,10 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 const router = require("./router/index");
 
-sequelize
-  .sync()
-  .then(() => console.log("connected database"))
-  .catch((err) => console.log("occurred error in database connecting", err));
+sequelize.sync().then(() => console.log("connected database"));
 
 app.listen(port, () => {
   console.log(`server is on ${port}`);
